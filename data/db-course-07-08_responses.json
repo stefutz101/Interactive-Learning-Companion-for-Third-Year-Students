@@ -1,0 +1,1040 @@
+[
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What key concepts were introduced by E.F. Codd in 1970 regarding data management?",
+    "output": "The key concepts introduced by E.F. Codd in 1970 included a high degree of data independence, dealing with data semantics, consistency, and redundancy, and the concept of normalization."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "Which system developed in the late 1970s by IBM led to the creation of SQL and commercial RDBMSs?",
+    "output": "The System R, developed by IBM at San Jose Research Laboratory California in the late 1970s, led to the creation of SQL and initiated the production of commercial RDBMSs."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What was the significance of INGRES developed at the University of California at Berkley?",
+    "output": "INGRES, known as Interactive Graphics REtrieval System, developed at the University of California at Berkley, made notable contributions in the field of data management."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What are the key characteristics of the model described in the text?",
+    "output": "The key characteristics of the model described in the text are simplicity, ad-hoc querying using high-level languages like SQL, and efficient implementations."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What type of query can be conducted with the model mentioned in the text?",
+    "output": "The model allows for ad-hoc queries using high-level languages such as SQL."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How would you describe the complexity of the model discussed in the text?",
+    "output": "The model is described as very simple in nature."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What are the key components of the relational model mentioned in the text?",
+    "output": "The key components of the relational model mentioned in the text are a collection of relations, a set of operators to act on the relations, and data integrity for accuracy and consistency."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the difference between intension (schema) and extension of a relational database?",
+    "output": "The difference between intension (schema) and extension of a relational database is that the schema is a structural description of all relations, while the extension is the actual content at a given point in time."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What are the examples of entities presented in the text?",
+    "output": "The examples of entities presented in the text are DEPT and EMP."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What are the attributes of the DEPT entity mentioned in the text?",
+    "output": "The attributes of the DEPT entity mentioned in the text are DEPTNO, DNAME, and LOC."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "Can you list some of the values associated with the DEPT entity in the text?",
+    "output": "Some of the values associated with the DEPT entity in the text include 'ACCOUNTING' located in 'NEW YORK' with DEPTNO 10, 'RESEARCH' located in 'DALLAS' with DEPTNO 20, 'SALES' located in 'CHICAGO' with DEPTNO 30, and 'OPERATIONS' located in 'BOSTON' with DEPTNO 40."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What does the abbreviation EMP stand for in the text?",
+    "output": "The abbreviation EMP stands for 'Employee' in the text."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the main idea presented in the text?",
+    "output": "The main idea presented in the text is the description of a relational database for student enrollment in a university, where students can enroll in courses offered by different departments, with limitations on the number of courses a student can take and the minimum number of students required for a course to run."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What are the main entities and attributes mentioned in the text?",
+    "output": "The main entities mentioned in the text are Courses, Students, and Enrollments. The attributes for Courses include CourseTitle, Department, and Credits. For Students, the attributes are StudID, StudName, DoB, PoB, and Major. Enrollments have attributes such as StudID, CourseTitle, EnrollmentDate, and Decision."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "Can you identify the data types associated with different attributes?",
+    "output": "The data types mentioned in the text are NVARCHAR(50) for CourseTitle and StudName, NVARCHAR(20) for Department, INTEGER for Credits, StudID, and BOOLEAN for Decision, DATE for DoB, PoB, and EnrollmentDate."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the definition of a superkey in the context of relational databases?",
+    "output": "A superkey is an attribute or set of attributes that uniquely identifies a tuple within a relation."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What distinguishes a candidate key from other keys in a relation?",
+    "output": "A candidate key is a superkey such that no proper subset is a superkey within the relation, exhibiting uniqueness and irreducibility properties."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How is a primary key different from alternate keys within a relation?",
+    "output": "A primary key is a candidate key selected by the database designer to uniquely identify tuples within a relation, while alternate keys are all other candidate keys except the primary key."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What defines a foreign key in relational databases?",
+    "output": "A foreign key is an attribute or a set of attributes within one relation that matches the candidate key of another (possibly the same) relation."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What are the superkeys in the provided example?",
+    "output": "The superkeys in the example are combinations of attributes that uniquely identify tuples in a relation."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "Which attributes serve as candidate keys in the given context?",
+    "output": "The attributes StudID in Students and the combination of CourseTitle and StudID in Enrollments serve as candidate keys."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the primary key in the Courses relation?",
+    "output": "The primary key in the Courses relation is CourseTitle."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How are foreign keys used in the Enrollments relation?",
+    "output": "In the Enrollments relation, the attribute StudID serves as a foreign key referencing the primary key in the Students relation."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the purpose of mapping relations to SQL tables?",
+    "output": "The purpose of mapping relations to SQL tables is to implement the relational model in a database system."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How is schema modification achieved in SQL?",
+    "output": "Schema modification in SQL is achieved through commands like ALTER TABLE, which allows changes to a table's schema by adding or removing columns and applying constraints."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How can primary keys be set up in SQL implementation of the relation model?",
+    "output": "Primary keys in SQL implementation of the relation model can be set up by creating single-attribute primary keys or composed primary keys in the table creation process, as well as later on by modifying the table's structure."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What are the different ways to set up Alternate Key (Unique constraint) in SQL?",
+    "output": "The different ways to set up Alternate Key (Unique constraint) in SQL are by creating a table for single-attributed unique constraint or composed unique constraints, and by later modifying the table's structure."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How can you remove a Primary Key constraint in SQL?",
+    "output": "You can remove a Primary Key constraint in SQL using the ALTER TABLE command followed by the DROP CONSTRAINT clause."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the SQL syntax for adding a unique constraint to an existing table?",
+    "output": "To add a unique constraint to an existing table in SQL, you can use the ALTER TABLE command with the ADD UNIQUE or ADD CONSTRAINT clause."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How can Foreign Keys be set up in SQL implementation of the relation model?",
+    "output": "Foreign Keys in SQL implementation of the relation model can be set up in different ways: either while creating the table for single-attribute foreign keys, for composed foreign keys, or by later modifying the table's structure."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the process for removing Foreign Keys in SQL implementation?",
+    "output": "In SQL implementation, Foreign Keys can be removed by using the ALTER TABLE command followed by DROP CONSTRAINT to delete the specific Foreign Key."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What are the different types of keys discussed in the text?",
+    "output": "The different types of keys discussed in the text are Superkey, Candidate key, Composite key, and Foreign key."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "Which attributes form a composite key in relation R(A, B, C, D)?",
+    "output": "The attributes {B, C} form a composite key in relation R(A, B, C, D)."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is meant by a foreign key in the context of a database relation?",
+    "output": "A foreign key in the context of a database relation is a set of attributes that refers to the primary key of another relation."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What are the different sets of attributes that uniquely identify the tuples in relation R(A, B, C, D)?",
+    "output": "The different sets of attributes that uniquely identify the tuples in relation R(A, B, C, D) are {A}, {B, C}, {A, B}, and {B, C}."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "Which sets of attributes serve as candidate keys in the given relation R(A, B, C, D)?",
+    "output": "The sets of attributes {A} and {B, C} serve as candidate keys in the given relation R(A, B, C, D)."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the difference between a superkey and a composite key in the context of relation R(A, B, C, D)?",
+    "output": "A superkey is a set of attributes that uniquely identifies tuples, while a composite key is a combination of multiple attributes that also uniquely identifies tuples in relation R(A, B, C, D)."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is meant by 'Null' in the context of relational integrity?",
+    "output": "'Null' refers to a value for an attribute that is currently unknown or undefined."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What are integrity rules in the context of databases?",
+    "output": "Integrity rules are rules that govern the accuracy and consistency of data within a database."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What do domain constraints refer to in relation to database administration?",
+    "output": "Domain constraints are constraints specified by data or database administrators that define or constrain certain aspects of an enterprise."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How are general constraints different from domain constraints in database management?",
+    "output": "General constraints are additional rules specified by data or database administrators, while domain constraints are specifically related to defining or constraining aspects of the enterprise."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is Entity Integrity in relational databases?",
+    "output": "Entity Integrity in relational databases states that a primary key of a tuple, or any part of it, can never be null."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is Referential Integrity in relation databases?",
+    "output": "Referential Integrity in relational databases ensures that if a foreign key exists, it must either match a candidate key value of some tuple in its home relation or be null."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What are the two main query languages mentioned in the text?",
+    "output": "The two main query languages mentioned in the text are Relational Algebra and Structured Query Language (SQL)."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the purpose of Structured Query Language (SQL) according to the text?",
+    "output": "According to the text, Structured Query Language (SQL) is used as a de facto/implemented language for querying relational databases, including Data Manipulation Language (DML) and Data Definition Language (DDL) operations."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is highlighted as a factor that can vary when posing queries according to the text?",
+    "output": "The text mentions that some queries are easy to pose, while others are more difficult, and some are easier to execute but can be more difficult (expensive) in terms of resource usage."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What are some examples of querying the relational model mentioned in the text?",
+    "output": "Some examples of querying the relational model mentioned in the text include listing name and date of birth of students with a major in CS in natural language, using Relational Algebra to select student names and dates of birth where the major is CS, and employing Structured Query Language (SQL) to retrieve student names and dates of birth from the Students table where the major is CS."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How is querying relational data expressed in both natural language and formal languages?",
+    "output": "Querying relational data can be expressed in natural language by listing the name and date of birth of students with a major in CS in plain English, while in formal languages such as Relational Algebra and SQL, specific commands and syntax are used to retrieve the desired information from the database."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What are some key operations in Relational Algebra?",
+    "output": "Some key operations in Relational Algebra include Selection, Projection, Join, Set-based operations, Cartesian Product, Union, Set Difference, Intersection, and Rename."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the closure property in Relational Algebra?",
+    "output": "The closure property in Relational Algebra states that relations are closed under the algebra, meaning both the operands and results are relations."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "Who originally defined the bold operators in Relational Algebra and in what year?",
+    "output": "The bold operators in Relational Algebra were originally defined by E.F Codd in 1970."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the purpose of the 'Table name' in the text chunk?",
+    "output": "The 'Table name' serves to list different examples of relations like Students and Enrollments."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What does the text suggest about the 'simplest query' mentioned?",
+    "output": "The simplest query returns a copy of the relation as per the text."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How are examples used in the text?",
+    "output": "Examples such as Students and Enrollments are provided to illustrate the concept of relations."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "Why are 'Table name' and 'Examples' important in understanding queries?",
+    "output": "'Table name' and 'Examples' help in demonstrating different relations and providing clarity on query concepts."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the purpose of the 'Selection' operation on a relation in a database?",
+    "output": "The 'Selection' operation on a relation in a database is used to filter tuples of the relation based on a specified condition (predicate)."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How does the 'Selection' operation work in database operations?",
+    "output": "The 'Selection' operation works on a single relation and returns the subset of the relation that contains only those tuples satisfying the specified condition (predicate)."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "Can you provide examples of how the 'Selection' operation is used in database queries?",
+    "output": "Examples of the 'Selection' operation include filtering students with a Major in CS or students accepted in a Databases course."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What role does the 'Selection' operation play in database management?",
+    "output": "The 'Selection' operation plays a crucial role in filtering and selecting specific tuples from a relation based on specified conditions, aiding in data retrieval and manipulation."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What does the 's predicate (R)' operation in relational algebra do?",
+    "output": "The 's predicate (R)' operation in relational algebra works on a single relation R and returns the subset of relation R that contains only those tuples satisfying the specified condition (predicate)."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How is the selection operation represented in English for a Databases course enrollment?",
+    "output": "In English, the selection operation for a Databases course enrollment is described as 'Students accepted in Databases course'."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How is the selection operation represented in SQL for finding students with a major in CS?",
+    "output": "The selection operation in SQL for finding students with a major in CS is represented as 'SELECT * FROM Students WHERE Major=\\u2018CS\\u2019'."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the purpose of the Projection operation described in the text?",
+    "output": "The purpose of the Projection operation is to work on a single relation and return a new relation that contains a vertical subset of the original relation by extracting specified attributes' values and eliminating duplicates."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How is the Projection operation represented in Relational Algebra?",
+    "output": "The Projection operation in Relational Algebra is represented as 'P col1, \\u2026, coln(R)', where it extracts values of specified attributes from a single relation R."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the SQL equivalent of the English query 'Name and major of all students' presented in the text?",
+    "output": "The SQL equivalent of the query 'Name and major of all students' is 'SELECT [DISTINCT] StudName, Major FROM Students'."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the difference between handling duplicates in Relational Algebra and SQL?",
+    "output": "In Relational Algebra, duplicates are eliminated based on set theory, whereas in SQL duplicates are not automatically eliminated. However, in SQL, the SELECT DISTINCT statement can be used to eliminate duplicates."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the purpose of the SELECT DISTINCT statement in SQL?",
+    "output": "The SELECT DISTINCT statement in SQL is used to eliminate duplicate values from the result set, ensuring that each row retrieved is unique."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is an example of breaking down a complex query into simpler expressions?",
+    "output": "An example of breaking down a complex query into simpler expressions is by using assignment statements."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How can complex queries be simplified using assignment statements?",
+    "output": "Complex queries can be simplified by breaking them down into simpler expressions using assignment statements."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the operation described as Cartesian/Cross-Product in the text?",
+    "output": "The operation described as Cartesian/Cross-Product in the text involves the concatenation of every tuple of relation R with each tuple of relation S."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What determines the schema of the cross-product relation in this context?",
+    "output": "The schema of the cross-product relation is determined by the union of the schemas of the two operand relations, R and S."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How is the number of tuples in the Cartesian product of R x S calculated according to the text?",
+    "output": "The number of tuples in the Cartesian product of R x S is calculated by multiplying the cardinality of relation R with the cardinality of relation S, resulting in Cardinality(R) x Cardinality(S)."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the notation used to represent Cartesian product in different contexts?",
+    "output": "The notation used to represent Cartesian product in different contexts includes 'Students x Enrollments' in Relational Algebra, 'SELECT * FROM Students, Enrollments' or 'SELECT * FROM Students CROSS JOIN Enrollments' in SQL, and 'R x S' as a general representation."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What does the Cartesian product operation result in?",
+    "output": "The Cartesian product operation results in a new relation that combines every tuple from relation R with each tuple from relation S."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What does the Cartesian/Cross-Product operation do in terms of SQL?",
+    "output": "The Cartesian/Cross-Product operation in SQL returns a new relation that is the concatenation of every tuple of relation R with each tuple of relation S."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How is the Cartesian/Cross-Product operation represented in relational algebra?",
+    "output": "In relational algebra, the Cartesian/Cross-Product operation is represented as R x S, where it combines every tuple of relation R with each tuple of relation S."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the main purpose of the SQL query mentioned in the text?",
+    "output": "The main purpose of the SQL query mentioned is to select all data from the Students and Enrollments tables where the Student ID from both tables match."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the SQL query to retrieve the name and major of students accepted in the 'English' course?",
+    "output": "The SQL query to retrieve the name and major of students accepted in the 'English' course is: SELECT StudName, Major FROM Students CROSS JOIN Enrollemnts WHERE Students.StudID = Enrollments.StudID AND CourseTitle='English' AND Decision=TRUE"
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the purpose of the 'Rename' operation in relational algebra?",
+    "output": "The purpose of the 'Rename' operation in relational algebra is to disambiguate attributes, especially in self-joins."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How is the 'Rename' operation used in the context of self-joins?",
+    "output": "The 'Rename' operation is used in self-joins to enable the selection of pairs based on the equality of attributes in different instances of the same relation."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What does the example show in terms of SQL query execution?",
+    "output": "The example demonstrates how to retrieve pairs of courses offered by the same department using SQL SELECT statement with self-join of the 'Courses' relation."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the purpose of the 'Rename' operation in the context of relational algebra?",
+    "output": "The purpose of the 'Rename' operation in relational algebra is to disambiguate attributes by assigning new names to them."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How is the 'Rename' operation used for self-joins in relational algebra?",
+    "output": "The 'Rename' operation is used for self-joins in relational algebra to differentiate attributes when joining two instances of the same relation."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "Can you provide an example of when the 'Rename' operation would be needed in a relational algebra query?",
+    "output": "The 'Rename' operation is needed in relational algebra queries, such as self-joins, where attribute names need to be distinct between relation instances."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What are the criteria for selecting students in the given expressions?",
+    "output": "The criteria for selecting students in the given expressions include being born in Timisoara, applying for the Databases course, and being rejected."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How are the students from Timisoara who applied for the Databases course and were rejected identified in the expressions?",
+    "output": "The students from Timisoara who applied for the Databases course and were rejected are identified by filtering based on their birthplace being Timisoara, course applied is Databases, and the decision being rejection."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "Which expression specifically filters out students based on their birthplace and course application status?",
+    "output": "Expression a) specifically filters out students based on their birthplace being Timisoara, applying for the Databases course, and having a rejection decision."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the purpose of the given SQL expressions in the text?",
+    "output": "The purpose of the given SQL expressions is to retrieve the name and major of students born in Timisoara who applied for the Databases course and were rejected."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How does expression 'c' differ from expressions 'a' and 'b' in the context of SQL operations?",
+    "output": "Expression 'c' differs from expressions 'a' and 'b' by performing the projection on StudName and Major before joining the Students and Enrollments tables, making StudID unavailable after the projection."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "Why is expression 'c' identified as NOT returning the desired information in the given scenario?",
+    "output": "Expression 'c' is identified as NOT returning the desired information because after projecting on StudName and Major, the necessary attribute StudID in Students/Enrollments is no longer accessible for the subsequent operations."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What are the types of joins mentioned in the text?",
+    "output": "The types of joins mentioned in the text are Theta join, Equi join, Natural join, later renamed to INNER Join."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the relationship between join operations and Relational Algebra?",
+    "output": "Join operations do not provide additional power to Relational Algebra; they are shortened forms of other expressions."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How is the schema of a join operation defined in the text?",
+    "output": "The schema of a join operation is the union of the 2 schemas of the operands relations."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is a Theta Inner Join and how is it executed?",
+    "output": "A Theta Inner Join is a type of join operation that combines tuples from two relations, R and S, based on a specified predicate F. The predicate F determines the conditions under which tuples are combined, following which a new relation is created. The execution involves forming the Cartesian product of R and S and then applying the predicate to filter out tuples that do not meet the condition."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What operators can be used in the predicate of a Theta Inner Join?",
+    "output": "The operators that can be used in the predicate of a Theta Inner Join are: < (less than), > (greater than), <= (less than or equal to), >= (greater than or equal to), = (equal to), <>(not equal to). These operators help specify the relationship between attributes of tuples from the two relations being joined."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How does a Theta Join differ from a regular join operation?",
+    "output": "A Theta Join differs from a regular join operation by allowing for more flexibility in specifying the join condition. In a Theta Join, the join condition is not limited to equality between attributes, unlike in a regular join. Instead, a Theta Join can use a variety of comparison operators to define the relationship between attributes when combining tuples from different relations."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the Equi Inner Join and how is it defined in relational algebra?",
+    "output": "The Equi Inner Join is defined as R \\u22c8F S in relational algebra, where F is like R.ai = S.bi, indicating a Theta join with the operator = in all expressions."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "Can you provide an example of the Equi Inner Join in relational algebra?",
+    "output": "An example of the Equi Inner Join is retrieving all enrollments with their name, major, date, and place of birth by matching the conditions specified in R.ai = S.bi."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What information can be extracted from the Equi Inner Join operation?",
+    "output": "The Equi Inner Join operation allows for retrieving specific data by matching specified conditions, such as name and major of all enrollments in a particular course."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What are the key features of an Equi Inner Join?",
+    "output": "The key features of an Equi Inner Join include matching values based on a specified condition, denoted by the operator = in all expressions."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How is an Equi Inner Join different from a Theta join?",
+    "output": "An Equi Inner Join specifically uses the = operator in all expressions to match values, while a Theta join allows for a broader range of comparison operators."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What does the SQL query SELECT * FROM Enrollments JOIN Students ON Enrollments.StudID = Students.StudID accomplish?",
+    "output": "The SQL query retrieves all enrollments along with the corresponding student details by linking the tables Enrollments and Students through the common attribute StudID."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What type of join operation is described in the text?",
+    "output": "The type of join operation described in the text is Equi Inner Join."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the purpose of the Theta join operator mentioned in the text?",
+    "output": "The purpose of the Theta join operator mentioned in the text is to join tables using the = operator in all expressions."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How is the relational algebra expression for selecting student names and majors in the Networks course presented?",
+    "output": "The relational algebra expression for selecting student names and majors in the Networks course is presented as P StudName, Major(s CourseTitle='Networks' (Enrollments Enrollments.StudID=Students.StudID Students))."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What SQL query is provided to retrieve student names and majors from the Enrollments table for the Networks course?",
+    "output": "The SQL query provided is: SELECT StudName, Major FROM Enrollments INNER JOIN Students ON Enrollments.StudID = Students.StudID WHERE CourseTitle = 'Networks'."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the difference between INNER JOIN and NATURAL JOIN in relational databases?",
+    "output": "The main difference between INNER JOIN and NATURAL JOIN is that in INNER JOIN, common columns are duplicated, while in NATURAL JOIN, common columns are included only once."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How is a natural join defined and executed in the context of relational algebra?",
+    "output": "A natural join in relational algebra is an equi-join of two relations R and S over all common attributes, with one occurrence of each common attribute removed from the result."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "Can all database management systems support SQL NATURAL JOIN?",
+    "output": "No, SQL NATURAL JOIN is not supported by all DBMSes."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What are some extensions to Relational Algebra mentioned in the text?",
+    "output": "Some extensions to Relational Algebra mentioned in the text are Left/Right Outer join, Full Outer join, Left/Right Semi join, and Left/Right Anti join."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is a left outer join in database terms?",
+    "output": "A left outer join is a join where tuples from the first relation (R) that do not have matching values in the common columns of the second relation (S) are included in the result. Missing values in S are set to null."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How does a left outer join differ from other types of joins?",
+    "output": "A left outer join preserves tuples that would have been lost with other types of joins when there are no matching values in the common columns of the relations."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the purpose of a right outer join in database operations?",
+    "output": "The purpose of a right outer join is to preserve tuples from the right-hand side relation (S) that do not have matching values in the common columns with the left-hand side relation (R)."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the purpose of a Left Outer Join in SQL?",
+    "output": "The purpose of a Left Outer Join in SQL is to retrieve all records from the left table (Students) and the matched records from the right table (Enrollments), with NULL values in the right table where there is no match."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How does the SQL query for Left Join in the text differentiate from a regular JOIN?",
+    "output": "The SQL query for Left Join in the text includes the keyword LEFT JOIN, which ensures that all records from the left table (Students) are included, regardless of whether there is a match in the right table (Enrollments)."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What does the English explanation of Right Outer Join in the text imply?",
+    "output": "The English explanation of Right Outer Join suggests retrieving all courses offered by the CS department and listing the enrolled students for each course, with NULL values for courses without enrolled students."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How is the Relational Algebra expression for Right Join related to the SQL query provided?",
+    "output": "The Relational Algebra expression 's Department = \\u2018CS\\u2019 (Enrollments Courses)' indicates filtering courses by the CS department before performing a Right Join, which aligns with the SQL query's WHERE clause specifying Department = \\u2018CS\\u2019."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the outcome of a full outer join operation?",
+    "output": "The outcome of a full outer join operation is the set of all combinations of tuples in R and S that are equal on their common attribute names, along with tuples in S that have no matches in R and tuples in R that have no matches in S, with missing values set to null."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How does a full outer join handle tuples with no matching counterparts in the other relation?",
+    "output": "A full outer join handles tuples with no matching counterparts by including them in the result, whether they are from relation S or R, and setting missing values to null."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the purpose of a Full Outer Join in databases?",
+    "output": "The purpose of a Full Outer Join is to combine all tuples from two tables, including matching tuples and unmatched tuples from both tables based on their common attribute names, setting missing values to null."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is a Left/Right Semi Join in SQL?",
+    "output": "A Left/Right Semi Join in SQL returns a relation that contains only the columns of one table (R); only the tuples of R that participate in the join with another table (S) will be returned, and only once, regardless of how many times they matched in S."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How does a Left/Right Semi Join differ from other types of SQL joins?",
+    "output": "A Left/Right Semi Join differs from other types of SQL joins by only returning the columns of one table (R) and the tuples of R that have matches in the other table (S), without duplicating the results for multiple matches in S."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the purpose of a Left / Right Semi Join in SQL?",
+    "output": "The purpose of a Left / Right Semi Join in SQL is to return a relation that contains only the columns of the first table (R), where only the tuples of R that participate in the join with the second table (S) are returned, regardless of the number of times they match in S."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What are the variants of performing a Left / Right Semi Join in SQL?",
+    "output": "There are three variants for performing a Left / Right Semi Join in SQL: Variant 1 involves using an IN subquery with SELECT * FROM R, Variant 2 utilizes an IN subquery with a condition on the join key, and Variant 3 uses a NATURAL JOIN between tables R and S when they share common columns."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How does a Left / Right Semi Join handle matching tuples in SQL?",
+    "output": "A Left / Right Semi Join in SQL handles matching tuples by returning only the tuples of the first table that participate in the join with the second table, and each matched tuple from the first table is returned only once, regardless of the number of matches in the second table."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What does a Left / Right Semi Join return?",
+    "output": "A Left / Right Semi Join returns a relation that contains only the columns of R; only the tuples of R that participate in the join with S will be returned and only once, regardless how many times matched in S."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What does the 'Left / Right Semi Join' operation in the text refer to?",
+    "output": "The 'Left / Right Semi Join' operation in the text refers to retrieving full details of students who are accepted in the Networks course."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How is the Left / Right Semi Join operation defined in relational algebra?",
+    "output": "In relational algebra, the Left / Right Semi Join operation is defined as selecting students where the course title is 'Networks' and the decision is true in the enrollments table."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What SQL query can be used to perform the Left / Right Semi Join operation described?",
+    "output": "The SQL query to perform the Left / Right Semi Join operation is: SELECT * FROM Students WHERE StudID IN (SELECT StudID FROM Enrollments WHERE Enrollments.StudID = Students.StudID AND CourseTitle='Networks' AND Decision=TRUE)"
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the purpose of a Left Anti Join in SQL?",
+    "output": "The Left Anti Join in SQL returns the rows from table R that do not have at least one matching row in table S."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How is the Left Anti Join different from a Semi Join?",
+    "output": "The Left Anti Join returns rows that do not have a match in the other table, while a Semi Join only returns rows with matches."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What are some SQL query variants that can be used to implement a Left Anti Join?",
+    "output": "SQL query variants for Left Anti Join include using NOT IN subquery, NOT EXISTS subquery, and EXCEPT operator in SELECT statements."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What does the Left/Right Anti Join entail?",
+    "output": "The Left/Right Anti Join involves obtaining full details of students who are not accepted in the Networks course."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How is the Left/Right Anti Join represented in relational algebra?",
+    "output": "In relational algebra, the Left/Right Anti Join is represented as Students \\u25b7(sCourseTitle='Networks' AND Decision=TRUE (Enrollments))."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the SQL query for obtaining details of students not accepted in the Networks course?",
+    "output": "The SQL query is: SELECT * FROM Students WHERE NOT EXISTS (SELECT StudID FROM Enrollments WHERE Enrollments.StudID = Students.StudID AND CourseTitle='Networks' AND Decision=TRUE)."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What are the three main set operations presented in the text?",
+    "output": "The three main set operations presented in the text are UNION, DIFFERENCE, and INTERSECTION."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How can you combine two sets together in set theory?",
+    "output": "You can combine two sets together in set theory using the UNION operation."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What operation in set theory finds the common elements between two sets?",
+    "output": "The INTERSECTION operation in set theory finds the common elements between two sets."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the operation called when combining two relations R and S in the text?",
+    "output": "The operation is called the 'Set Union' when combining two relations R and S."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is a requirement for relations R and S to perform the union operation?",
+    "output": "Relations R and S must be union compatible, meaning they should have the same number of attributes/columns and corresponding attributes should have matching domains."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What operation does the 'UNION' function perform in SQL?",
+    "output": "The 'UNION' function in SQL removes duplicated rows when combining the results of two SELECT statements."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How is the union of two relations R and S defined?",
+    "output": "The union of two relations R and S is obtained by concatenating them into one relation, eliminating duplicates, and having a maximum of I + J tuples."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the difference between 'UNION' and 'UNION ALL' in SQL?",
+    "output": "The 'UNION' function in SQL removes duplicates rows when combining results, while 'UNION ALL' preserves duplicated rows in the final result."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the concept of set union as presented in the text?",
+    "output": "The concept of set union in this context refers to combining two relations, R and S, into one by concatenating them while eliminating duplicates."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How is the union of two relations represented in relational algebra and SQL?",
+    "output": "In relational algebra, the union of two relations is denoted by 'u,' while in SQL, it is represented by the 'UNION' keyword."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the concept of set difference in relational databases?",
+    "output": "The concept of set difference in relational databases refers to defining a relation that consists of tuples in relation R but not in S. It requires R and S to be union compatible and is often implemented in SQL using operators like EXCEPT (in MS SQL Server, PostgreSQL) or MINUS (in Oracle)."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What does the operation 'R - S' represent in set difference?",
+    "output": "The operation 'R - S' in set difference represents a relation consisting of tuples that are in relation R but not in S."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How would you define set difference in English based on the text?",
+    "output": "Set difference in English can be defined as the IDs of students who didn\\u2019t apply for any course."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the requirement for R and S in set difference according to the text?",
+    "output": "R and S must be union compatible in set difference operations."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What SQL query can be used to find the set difference between Students and Enrollments based on the text?",
+    "output": "SQL query: SELECT StudID FROM Students EXCEPT SELECT StudID FROM Enrollments"
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What does the 'Set Difference' operation in relational algebra entail?",
+    "output": "The 'Set Difference' operation in relational algebra defines a relation consisting of tuples that are in relation R but not in S, where R and S must be union compatible."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How is the 'Set Difference' operation represented in SQL?",
+    "output": "The 'Set Difference' operation can be represented in SQL using a LEFT JOIN combined with a WHERE clause to filter out tuples where there is no corresponding entry in the second relation."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the purpose of the 'Set Difference' operation in the context of relational databases?",
+    "output": "The 'Set Difference' operation is used in relational databases to find entities that exist in one relation but not in another, allowing for comparisons and analysis of data across multiple sets."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the main idea presented in the text?",
+    "output": "The main idea presented in the text is that set intersection in relational algebra consists of tuples that are common to both sets R and S, where R and S must be union-compatible."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How is set intersection defined in relational algebra?",
+    "output": "Set intersection in relational algebra, denoted as R \\u2229 S, consists of all tuples that exist in both sets R and S, requiring union-compatibility between R and S."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the relationship between set intersection and set difference in relational algebra?",
+    "output": "In relational algebra, the relationship between set intersection and set difference is illustrated by the expressions R \\u2229 S = R \\u2212 (R \\u2212 S) and R \\u2212 (R \\u2229 S) = R \\u2212 (R \\u2212 S), showing no additional expressiveness to relational algebra."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What does the set intersection operation in relational databases represent?",
+    "output": "The set intersection operation in relational databases represents the set of all tuples that are present in both sets R and S."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How can the set intersection be applied in SQL queries?",
+    "output": "The set intersection can be applied in SQL queries using the 'INTERSECT' operator, which returns the common values between two sets."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "Can you give an example of set intersection using SQL syntax?",
+    "output": "An example of set intersection using SQL syntax is: 'SELECT Department FROM Courses INTERSECT SELECT Major FROM Students'."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the specific task described in the text?",
+    "output": "The specific task described in the text is to write a relational algebra expression and SQL implementation to retrieve the IDs and names of students who did not apply to any course."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What type of data are we trying to retrieve using the relational algebra expression and SQL implementation?",
+    "output": "We are trying to retrieve the IDs and names of students who did not apply to any course."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the purpose of the relational algebra expression and SQL implementation mentioned in the text?",
+    "output": "The purpose of the relational algebra expression and SQL implementation is to retrieve the IDs and names of students who did not apply to any course."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How can the relational algebra expression and SQL implementation help identify students who did not apply for any course?",
+    "output": "The relational algebra expression and SQL implementation help identify students who did not apply for any course by comparing the Student IDs between the Students table and the Enrollments table."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What does the given expression \\u03c0 CourseTitle(Courses) - \\u03c0 CourseTitle(Enrollments (\\u03c0 StudID(\\u03c3 PoB=\\u2018Timisoara\\u2019(Students)) \\u2229 \\u03c0 StudID(\\u03c3 Decision=TRUE(Enrollments)))) represent?",
+    "output": "The given expression represents the list of courses without Timisoara-born students who were accepted into any course."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the purpose of the given SQL query?",
+    "output": "The purpose of the given SQL query is to retrieve course titles for all courses where students were either born in Timisoara or were accepted in any course."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What information does the SQL query aim to extract?",
+    "output": "The SQL query aims to extract course titles for courses based on specific criteria related to student birthplace and enrollment status."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What does the expression '\\u03c0 StudID(\\u03c3 Decision=TRUE(Enrollments))' represent in the SQL query?",
+    "output": "The expression '\\u03c0 StudID(\\u03c3 Decision=TRUE(Enrollments))' represents the selection of student IDs for enrolled students with a 'TRUE' decision status."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What are some of the other extensions to Relational Algebra mentioned in the text?",
+    "output": "Some of the other extensions to Relational Algebra mentioned in the text are Division and Extended projection."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What operations are included in the Extended projection extension of Relational Algebra?",
+    "output": "The Extended projection extension of Relational Algebra includes Aggregations and Groupings."
+  },
+  {
+    "question": "What is the purpose of the division operation in relational databases?",
+    "answer": "The division operation defines a relation over the attributes C that consists of the set of tuples from R that match the combination of every tuple in S."
+  },
+  {
+    "question": "Can you provide an example of how the division operation works in practice?",
+    "answer": "An example is identifying all students who enrolled in all courses offered by the CS department."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the definition of the division operation in relation algebra based on the text?",
+    "output": "The division operation in relation algebra defines a relation over the attributes C that consists of the set of tuples from R that match the combination of every tuple in S."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "Can you give an example of how division operation is used in relation algebra?",
+    "output": "An example provided is identifying all students who enrolled in all courses offered by the CS department by matching tuples between StudentID and CourseTitle."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "Is there an equivalent SQL command for the division operation in relation algebra?",
+    "output": "No, there is no equivalent SQL command for the division operation in relation algebra."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What are some of the main aggregate functions mentioned in the text?",
+    "output": "The main aggregate functions mentioned in the text are COUNT, SUM, AVG, MIN, and MAX."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How can you find the number of students born in Timisoara using SQL?",
+    "output": "To find the number of students born in Timisoara using SQL, you can use the query: SELECT COUNT(StudID) AS StudCount FROM Student WHERE PoB='Timisoara'."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the purpose of the SQL query mentioned in the text?",
+    "output": "The purpose of the SQL query is to find the number of students born in each city by grouping and counting the data based on 'Place of Birth'."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What specific data is selected and grouped in the SQL query?",
+    "output": "The SQL query selects 'Place of Birth' and counts the number of students born in each city by grouping the data based on 'Place of Birth'."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What are the components of the SELECT statement described in the text?",
+    "output": "The components of the SELECT statement described in the text include projection, join (equi), selection, aggregation functions, joining tables, constraints, grouping by columns, ordering, and limiting results."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the purpose of the WHERE clause in a SELECT statement?",
+    "output": "The WHERE clause is used to specify a constraint expression that filters the rows returned by the query based on certain conditions."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How can the GROUP BY clause be used in a SELECT statement?",
+    "output": "The GROUP BY clause is used to group the result set based on the values of a specific column, allowing for aggregate functions to be applied on each group."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the logical query processing order in SQL?",
+    "output": "The logical query processing order in SQL refers to the order in which the clauses of a SELECT statement are processed, including SELECT, FROM, JOIN, WHERE, GROUP BY, HAVING, SELECT again (to project final result set), DISTINCT, ORDER BY, and LIMIT/OFFSET."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What are some of the key clauses involved in the logical query processing order in SQL?",
+    "output": "Some key clauses involved in the logical query processing order in SQL include SELECT, FROM, JOIN, WHERE, GROUP BY, HAVING, SELECT again (to project final result set), DISTINCT, ORDER BY, and LIMIT/OFFSET."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What keywords in the SELECT clause are processed after the ORDER BY?",
+    "output": "The keywords processed after the ORDER BY in the SELECT clause are DISTINCT, TOP, and OFFSET/LIMIT."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What does the DISTINCT keyword do in the processing order?",
+    "output": "The DISTINCT keyword removes all duplicate records after the data has been ordered."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "When does the TOP keyword come into play in the processing order?",
+    "output": "The TOP keyword returns the TOP number or percentage of rows after the data has been ordered and duplicates have been removed when DISTINCT is present."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the significance of OFFSET/LIMIT in the processing order?",
+    "output": "The OFFSET/LIMIT keywords are applied after DISTINCT and ORDER BY, allowing for specific row limitations or offsets in the data."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What are the different types of subqueries mentioned in the text?",
+    "output": "The text mentions two types of subqueries: self-contained and correlated. Additionally, subqueries can be categorized as single-values (scalar) or multi-valued based on the type of result they return."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What are some examples of relational operators mapped to SQL in the text?",
+    "output": "Some examples of relational operators mapped to SQL include Selection, Natural Join, Equi Inner Join, Left Outer Join, Full Outer Join, Semi Join, and Anti Join."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How is the Division operator handled in SQL according to the text?",
+    "output": "The Division operator is not directly supported in SQL, and it can be achieved using complex queries involving other operations."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the significance of the 'CA' attribute mentioned in the SELECT statements?",
+    "output": "The 'CA' attribute in the SELECT statements stands for Common Attributes, representing one or more common attributes shared by the R and S tables."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What are the main objectives of the provided SQL exercises?",
+    "output": "The main objectives of the provided SQL exercises are to list student details including IDs, names, dates of birth, majors, and any unconfirmed enrollments, as well as to identify students with duplicate names and those with multiple unconfirmed credits."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What are the categories of rules listed in the text?",
+    "output": "The categories of rules listed in the text are foundational rules, structural rules, integrity rules, data manipulation rules, and data independence rules."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "Who established the 12 + 1 rules of Codd?",
+    "output": "The 12 + 1 rules of Codd were established by Codd."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is Rule 0 in the foundational rules mentioned in the text?",
+    "output": "Rule 0 states that the system must be able to manage databases entirely through its relational capabilities."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What does Rule 12 (non-subversion) address in relational systems according to the text?",
+    "output": "Rule 12 (non-subversion) ensures that if a relational system has a low level language, it cannot be used to subvert or bypass the integrity rules and constraints of the higher level relational language."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What are the key structural rules mentioned in the text chunk?",
+    "output": "The key structural rules mentioned in the text chunk are information representation and view updating."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How is information represented according to Rule 1?",
+    "output": "According to Rule 1, all information is represented explicitly at the logical level and in exactly one way, by values in tables."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What does Rule 6 dictate about view updating?",
+    "output": "Rule 6 states that all views that are theoretically updatable are also updateable by the system."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What are the two integrity rules mentioned in the text chunk?",
+    "output": "The two integrity rules mentioned are Rule 3, which deals with the systematic treatment of null values, and Rule 10, which focuses on integrity independence."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "How does Rule 3 address null values in the context of data?",
+    "output": "Rule 3 addresses null values by supporting their use for representing missing or inapplicable information in a systematic manner, regardless of data type."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the significance of integrity independence according to Rule 10?",
+    "output": "Integrity independence, as per Rule 10, emphasizes that integrity constraints specific to a relational database should be defined in the relational data sublanguage and stored in the catalog, not within applications."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What are some key data manipulation rules presented in the text?",
+    "output": "Some key data manipulation rules presented in the text include guaranteed access to atomic values, dynamic online catalog based on the relational model, comprehensive data sublanguage, and high level insert, update, delete capabilities."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "Why is it important for relational databases to have guaranteed access to atomic values?",
+    "output": "It is important for relational databases to have guaranteed access to atomic values because it ensures that each atomic value can be logically accessed using a combination of table name, primary key value, and column name, providing consistency and reliability in data retrieval."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the significance of Rule 5 (comprehensive data sublanguage) in data manipulation?",
+    "output": "Rule 5 (comprehensive data sublanguage) is significant as it mandates the existence of a language that can express data definition, view definition, data manipulation, integrity constraints, authorization, and transaction boundaries, ensuring a robust and complete framework for interacting with the database."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What are the three data independence rules mentioned in the text?",
+    "output": "The three data independence rules mentioned are physical data independence, logical data independence, and distribution independence."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "Why is Rule 8 important in database management?",
+    "output": "Rule 8 is important because it ensures that applications remain unaffected logically even when changes are made to storage representations or access methods."
+  },
+  {
+    "instruction": "Provide an answer to the following question:",
+    "input": "What is the significance of Rule 11 in database design?",
+    "output": "Rule 11 is significant as it emphasizes that applications should function the same regardless of whether data is centralized or distributed physically."
+  }
+]

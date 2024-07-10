@@ -1,0 +1,250 @@
+Massive data
+90% of the data in the world today has been created in the last two years alone.
+• 12TB of tweets / day 
+• working with less than 0.001% of the sensor stream data, the data flow from all four LHC experiments represents 25 PB annual rate before replication and continues to grow
+
+
+
+File-based systems
+• File-based system = collection of application programs that perform services for end-users such as the production of reports. 
+• Each program defines and manages its own data.
+• A file is a collection of records, containing logically related data. A record contains one or more fields
+• Limitations of file-based storage
+    – Separation and isolation of data
+    – Duplication of data
+    – Data dependence
+    – Incompatibility of files
+    – Fixed queries/proliferation of application programs
+    – Inability to generate timely reports
+
+
+
+The born of DBMSs
+• The DBMS has its roots in the 1960s Apollo moon-landing project – the GUAM (Generalized Update Access Method) – hierarchical approach
+• IBM joins in and the IMS (Information Management System) is born
+• Mid 1960s GE created IDS (Integrated Data Store) – network DBMS
+• 1960-1970 CODASYL (Conference on Data System Languages), DBTG (Data Base Task Group) which define the DDL and the DML
+• 1970 Codd introduces the relational model
+• 1976 Chen introduces the ER model
+• Late 1970s SQL is developed
+• Today we have many RDBMSs (DB2 from IBM, Oracle from Oracle, SQL Server from Microsoft etc…)
+
+
+
+The Database Approach
+• The Database
+• The Database Management System
+• (Database) Application Programs
+
+
+
+The Database
+• Database = a shared collection of logically related data (and a description of this data), designed to meet the information needs of an organization
+• Database = self-describing collection of integrated records
+    – Schema = description of data = system catalog, metadata
+    – Data model (set of records, XML documents, graph, collection of objects etc.)
+
+
+
+Data Models
+• Data Model = integrated collection of concepts for describing data, relationships between data, and constraints on the data in an organization.
+• The purpose of a data model is to represent data and to make the data understandable
+• Types of data models
+    – External data models
+    – Conceptual data models
+    – Internal data models
+
+
+
+Data Models
+• Main roles of data models
+    – Communicate the semantic of data
+    – Discover the semantic of data
+• Characteristics of logical (external/conceptual) data models
+    – Graphical diagram
+    – Explicit representation of semantic
+    – Appropriate level of detail
+    – DBMS independent
+    – Tool support
+
+
+
+Internal data models
+• Relational model
+• Object-oriented model
+• Graph model
+• Key-value model
+• Columnar model
+• Document model
+
+
+
+DBMS is a software system that enables users to define, create and maintain the database and provides controlled access to this database. 
+It provides efficient, reliable, convenient, and safe multi-user storage of and access to massive amounts of persistent data.
+
+
+
+Database Management System
+• Persistent – Outlive the programs that create/access the data
+• Safe – hardware/software failures, malicious users
+• Multi-user – concurrently access to data (concurrency control)
+• Convenient 
+• Physical Data Independence; huge difference between physical representation of data on disk and the logical way of seeing and working with;
+• High level, declarative (what, not how) query languages (e.g. SQL)
+• Efficient – thousands of operations (query/update) per second
+• Reliable – 99.99999 % uptime
+
+
+
+Database Management System
+• Allows users to define the database – Data Definition Language (DDL)
+• Allows users to insert, update, delete and retrieve data from the database – Data Manipulation Language (DML), e.g. SQL
+• Controlled access to the database
+• Security system
+• Integrity system
+• Concurrency control system
+• Recovery control system
+• User-accessible catalog
+
+
+
+Database Languages
+• Data Definition Language 
+    – Used to specify the database schema
+• Data Manipulation Language
+    – Used to update the database (insert, update, delete)
+• Data Query Language
+    – Used to extract (read) data needed at a moment
+
+
+
+Data Definition Language (DDL)
+• A descriptive language that allows the DBA or user to describe and name the entities required for the application, together with any associated integrity and security constraints
+• The result of the compilation of DDL statements is the system catalog (data dictionary) which integrates metadata
+• System catalog (= data dictionary = data directory) may, or may not, be accessible by database users
+• DDL used to specify external & conceptual schemas
+
+
+
+Data Manipulation Language (DML)
+• A language that provides a set of operations to support the basic data manipulation operations on the data held in the database
+• Operations include insertion, modification or deletion
+• Procedural DML – a language that allows the user to tell the system what data is needed and exactly how to retrieve the data (network and hierarchical DMLs are typically procedural)
+• Declarative DML – a language that allows the user to state what data is needed rather than how it is to be retrieved
+
+
+
+Data Query Language (DQL)
+• A language that provides a set of operations to support the basic data extraction on the data held in the database
+• Operations include querying the database
+• Procedural DQL vs. Declarative DQL
+
+
+
+4GLs
+• Non procedural
+• Presentation languages (query languages, report generators)
+• Specialty languages (spreadsheets)
+• Application / forms / graphics generators
+• Example: SQL, QBR (Query By Example)
+
+
+
+Components of a DBMS
+• Query processor
+• DML preprocessor
+• DDL compiler
+• Data dictionary
+• Run-time database manager
+Source: http://ecomputernotes.com/fundamental/what-is-a-database/components-of-dbms
+
+
+
+(Database) Application Programs
+Application Program = a computer program that interacts 
+with the database by issuing an appropriate request (typically an SQL statement) to the DBMS.
+
+
+
+Database Approach Environment
+• Hardware
+    – Single server
+    – Distributed architecture
+• Software (OS, DBMS, application programs)
+    – Apps are usually written in 3GL (e.g. C++, Java, Visual Basic, PHP)
+    – The DBMS may have 4GL for query languages, report generators, form generators, graphics generators, application generators (e.g. MS Access, SQL)
+
+
+
+Database Approach Environment
+• Data (schema = structure of the database, tables, attributes)
+    – Data models
+    – Names, types, and sizes of data items
+    – Names of relationships
+    – Integrity constraints
+    – Names of authorized users
+    – Indexes, storage structures
+
+
+
+Database Approach Environment
+• Procedures
+    – Instructions and rules that govern the design and use of the database
+• log on to the DBMS;
+• use a particular DBMS facility or application program;
+• start and stop the DBMS;
+• make backup copies of the database;
+• handle hardware or software failures
+• coding standards, guidelines
+• monitoring + notifications
+• migration
+
+
+
+Database Approach Environment
+• People (Roles in the Database Environment)
+    – Data administrator (DA): planning, development and maintenance of standards, policies and procedures + conceptual/logical design
+    – Database administrator (DBA): physical design and implementation, security, integrity, maintenance of the OS, ensuring satisfactory performance for apps and users
+    – Database designer: logical/conceptual database designer – business rules, physical database designer
+    – Application programmers
+    – End-users
+• Naïve users
+• Sophisticated users
+
+
+
+Advantages of DBMSs
+• Flexibility: more information from the same amount of data
+• Control of data redundancy
+• Data consistency
+• Sharing of data
+• Improved data integrity
+• Improved security
+• Enforcement of standards
+• Economy of scale
+• Balance of conflicting requirements
+• Improved data accessibility and responsiveness
+• Increased productivity
+• Improved maintenance
+• Increased concurrency
+• Improved backup and recovery services
+
+
+
+Shortcomings of DBMSs
+• Complexity and cost (HW + DBMS costs + cost of conversion to DB approach)
+• Size
+• Performance
+• Higher impact of a failure
+
+
+
+Common uses of DBMS
+• Web applications
+• Super/Hypermarket
+• Credit card management
+• Library
+• Insurance
+• Manufacturing
+• Financial/accounting
+• Social media

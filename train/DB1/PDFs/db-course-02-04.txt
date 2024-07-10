@@ -1,0 +1,788 @@
+Brief history
+• Proposed by E.F. Codd in 1970 (A relational model of data for large shared data banks)
+    – High degree of data independence
+    – Dealing with data semantics, consistency, and redundancy
+    – Introduces the concept of normalization
+• System R, developed by IBM at San Jose Research Laboratory California, in the late 1970s
+    – Led to the development of SQL
+    – Initiated the production of commercial RDBMSs
+• INGRES (Interactive Graphics REtrieval System) at they University of California at Berkley
+
+
+
+Key Characteristics
+• Very simple model 
+• Ad-hoc query with high-level languages (SQL)
+• Efficient implementations
+
+
+
+Relational Model Concepts
+• The relational model consists of the following:
+    – Collection of relations
+    – Set of operators to act on the relations
+    – Data integrity for accuracy and consistency
+• Intension (Schema) vs. Extension of a relational database
+    – Schema is a structural description of all relations
+    – Instance (extension) is the actual content a given point in time of the
+
+
+
+Terminology
+• Relational database = a collection of normalized relations
+• Relation = a table with columns and rows
+• Attribute = a named column of a relation
+    – Domain = a set of allowable values for one or more attributes
+    – SQL Data Types
+• Tuple = a row of a relation
+• Degree = the number of attributes contained in a relation
+• Cardinality = the number of tuples of a relation
+
+
+
+Relational Database - examples
+DEPT
+DEPTNO;DNAME;LOC;
+10;ACCOUNTING;NEW YORK;
+20;RESEARCH;DALLAS;
+30;SALES;CHICAGO;
+40;OPERATIONS;BOSTON;
+EMP
+EMPNO;ENAME;JOB;DEPTNO;
+7839;KING;PRESIDENT;10;
+7698;BLAKE;MANAGER;30;
+7782;CLARK;MANAGER;10;
+7566;JONES;MANAGER;20;
+
+
+
+Database relations
+• Relation schema is a relation name followed by a set {Ai:Di} of attribute and domain name pairs R = {A1:D1, A2:D2, … , An:Dn}
+• Properties of relations:
+    – The name is unique
+    – Each cell contains exactly one atomic value
+    – Attribute names are distinct
+    – The values of an attribute are all from the same domain
+    – The order of attributes has no significance
+    – The order of tuples has no significanct
+
+
+
+Running Example
+- A relational database for student enrollment:
+Students of our university should enroll in courses they want to attend. One student may enroll in up to 8 courses and for a course to be run it is required at least 10 accepted students. As places in courses are limited, for each enrollment request there will a decision associated whether the student is accepted or not in the course he/she opted for. Courses are offered by different departments of our university, are uniquely identified by their title and each course is credited a fixed number of credits for all students enrolled into. Students may enroll to courses offered by different departments.
+
+
+
+Example
+- A relational database for student enrollment:
+Courses(CourseTitle:NVARCHAR(50), Department:NVARCHAR(20), Credits:INTEGER)
+Students(StudID:INTEGER, StudName:NVARCHAR(50), DoB:DATE, PoB:NVARCHAR(50), Major:NVARCHAR(40))
+Enrollments(StudID:INTEGER, CourseTitle:NVARCHAR(50), EnrollmentDate:DATE, Decision:BOOLEAN)
+
+
+
+Relational Keys
+• Superkey = an attribute or set of attributes that uniquely identifies a tuple within a relation
+• Keys can be
+    – Single attribute = a key consisting of exactly one attribute
+    – Composite key = a key consisting of more than one attribute
+• Candidate key = a superkey such that no proper subset is a superkey within the relation
+    – Uniqueness – the values of the candidate key uniquely identify each tuple
+    – Irreductibility – no proper subset of K has the uniqueness property
+• Candidate key can be
+    – Primary Key = a candidate key selected by the database designer to uniquely identify tuples within a relation
+    – Alternate Keys = all other candidate keys, except the one elected to be the primary key
+• Foreign key = an attribute or a set of attributes within one relation that matches the candidate key of other (possibly the same) relation
+
+
+
+Exercise
+- Identify the superkeys, candidate keys, primary keys and foreign keys in the following example:
+Courses(CourseTitle:CHAR(50), Department:CHAR(20), Credits:INTEGER)
+Students(StudID:INTEGER, StudName:CHAR(50), DoB:DATE, PoB:CHAR(50), Major:CHAR(40))
+Enrollments(StudID:INTEGER, CourseTitle:CHAR(50), EnrollmentDate:DATE, Decision:BOOLEAN)
+
+
+
+SQL Implementation of relation model
+• Relations are mapped to SQL tables
+CREATE TABLE Students (StudID int NOT NULL, StudName varchar(50), DoB date, PoB varchar(50), Major varchar(40));
+ALTER TABLE – change table’s schema: add/remove columns, add constraints etc.
+
+
+
+SQL Implementation of relation model
+• Setting up Primary Key in different ways:
+    - While creating the table for single-attribute primary keys: CREATE TABLE Students (StudID int PRIMARY KEY, ...);
+    - While creating the table for composed primary keys: CREATE TABLE Students (..., CONSTRAINT PK_Students PRIMARY KEY (StudentName, DoB, PoB) );
+    - Later on by modifying table’s structure: ALTER TABLE Students ADD PRIMARY KEY (StudentID) ALTER TABLE Students ADD CONSTRAINT PK_Students PRIMARY KEY (StudentName, DoB, PoB)
+• Removing Primary Key: ALTER TABLE Students DROP PRIMARY KEY or ALTER TABLE Students DROP CONSTRAINT PK_Students
+
+
+
+SQL Implementation of relation model
+• Setting up Alternate Key (Unique constraint) in different ways:
+    - While creating the table for single-attributed unique constraint: CREATE TABLE Students (SomeColumn int NOT NULL UNIQUE, ...);
+    - While creating the table for composed unique constraints: CREATE TABLE Students (..., CONSTRAINT AK_Students_StudName_DoB_PoB UNIQUE (StudentName, DoB, PoB) );
+    - Later on by modifying table’s structure: ALTER TABLE Students ADD UNIQUE (SomeColumn) ALTER TABLE Students ADD CONSTRAINT AK_Students_StudName_DoB_PoB UNIQUE (StudentName, DoB, PoB)
+• Removing Primary Key ALTER TABLE Students DROP CONSTRAINT AK_Students_StudName_DoB_PoB
+
+
+
+SQL Implementation of relation model
+• Setting up Foreign Key in different ways:
+    - While creating the table for single-attribute foreign keys: CREATE TABLE Enrollments (StudID int FOREIGN KEY REFERENCES Students(StudID), ...)
+    - While creating the table for composed foreign keys: CREATE TABLE Enrollments (..., CONSTRAINT FK_Courses_Enrollments FOREIGN KEY (CourseTitle) REFERENCES Courses(CourseTitle))
+    - Later on by modifying table’s structure: ALTER TABLE Enrollments ADD FOREIGN KEY (StudID) REFERENCE Students(StudID) ALTER TABLE Enrollments ADD CONSTRAINT FK_Courses_Enrollments FOREIGN KEY (CourseTitle) REFERENCES Courses(CourseTitle)
+• Removing Foreign Key: ALTER TABLE Enrollments DROP CONSTRAINT FK_Courses_Enrollments
+
+
+
+Exercise
+Taken from Database Systems - A Practical Approach to Design, Implementation, and Management (4th edition) by Thomas Connolly and Carolyn Begg, Addison-Wesley, 2004|
+- Given relation R(A, B, C, D) the following sets of attributes uniquely identifies the tuples in the relation {A}, {B, C}. Fill in the following table 
+Set;Superkey;Candidate key;Composite key;Foreign key;
+{A};
+{A, B};
+{B, C};
+{A, C};
+{B};
+{B, D};
+
+
+
+Exercise
+Taken from Database Systems - A Practical Approach to Design, Implementation, and Management (4th edition) by Thomas Connolly and Carolyn Begg, Addison-Wesley, 2004|
+- Given relation R(A, B, C, D) the following sets of attributes uniquely identifies the tuples in the relation {A}, {B, C}. Fill in the following table
+Set;Superkey;Candidate key;Composite key;Foreign key;
+{A};YES;YES;NO;?;
+{A, B};YES;NO;YES;?;
+{B, C};YES;YES;YES;?;
+{A, C};YES;NO;YES;?;
+{B};NO;NO;NO;?;
+{B, D};NO;NO;NO;?;
+
+
+
+Relational Integrity
+• Null = a value for an attribute that is currently unknown (undefined)
+• Integrity rules: (see next slide)
+• General constraints: additional rules specified by the data / database administrators that define or constrain some aspects of the enterprise.
+• Domain constraints: constraints
+
+
+
+Relational Integrity
+• Entity Integrity: in a relation/table, a primary key of a tuple, or any part of it, can never take a null value.
+• Referential Integrity: if a foreign key exists in a relation, either the foreign key value must match a candidate key value of some tuple in its home relation or the foreign key value must be wholly null.
+
+
+
+Querying relational model
+• Relational Algebra
+    – formal
+• Structured Query Language (SQL) 
+    – de facto/implemented
+• SQL is also used for DML and DDL
+• Some queries easy to pose, some more difficult
+• Some easy to execute, others more difficult(expensive)
+
+
+
+Querying relational model: examples
+• List name and date of birth of all students with major in CS – natural language (plain English)
+• Relational Algebra – formal: P StudName, DoB(s Major=‘CS’ (Students))
+• Structured Query Language (SQL) – de facto/implemented: SELECT StudName, DoB FROM Students WHERE Major=‘CS’
+
+
+
+Relational Algebra
+• Theoretical language with operations that work on one or more relations
+• Both the operands and the results are relations
+• Closure = relations are closed under the algebra
+• Operations (operators)
+    – Selection (filter)
+    – Projection (slice)
+    – Join (combine)
+    – Set-based operations
+• Cartesian Product (cross-product)
+• Union
+• Set Difference 
+• Intersection
+    – Rename
+• Remark: duplicated tuples are purged from the result
+• Remark: bold operators originally defined by E.F Codd in 1970
+
+
+
+Table name
+• R
+• The simplest query
+• Returns the copy of the relation
+• Examples:
+    – Students
+    – Enrollments
+
+
+
+Selection
+• s predicate (R) 
+• Works on a single relation R and returns the subset of relation R that contains only those tuples satisfying the specified condition (predicate)
+• It is used to filter tuples of relation R based on a predicate
+• Examples:
+    – Students with Major in CS:
+    – Students accepted in Databases course :
+
+
+
+Selection
+• s predicate (R) 
+• Works on a single relation R and returns the subset of relation R that contains only those tuples satisfying the specified condition (predicate) 
+English: Students accepted in Databases course 
+Relational Alg.: s CourseTitle=‘Databases’ Λ Decision=TRUE(Enrollments)
+SQL: SELECT * FROM Enrollments WHERE CourseTitle=‘Databases’ AND Decision = TRUE
+English: Students with major in CS
+Relational Alg.: s Major=‘CS’ (Students) 
+SQL: SELECT * FROM Students WHERE Major=‘CS’
+
+
+
+Projection
+• P col1, …, coln(R)
+• Works on a single relation R and returns a new relation that contains a vertical subset of R, extracting the values of specified attributes and eliminating duplicates
+English: Name and major of all students
+Relational Alg.: P StudName, Major(Students) 
+SQL: SELECT [DISTINCT] StudName, Major FROM Students
+English: CourseTitle and department 
+Relational Alg.: P CourseTitle, Department(Courses)
+SQL: SELECT [DISTINCT] CourseTitle, Department FROM Courses
+
+
+
+Projection
+• Remark:
+    – In Relational Algebra, duplicates are eliminated (set theory)
+    – In SQL, duplicates are not; 
+• There is a SELECT DISTINCT that does eliminate duplicates.
+
+
+
+Assignment statements
+• Complex queries may be broken down into simpler expressions 
+• Example P StudName, DoB(s Major=‘CS’ (Students)) is equivalent to
+R1 := s Major=‘CS’ (Students)
+R2 := P StudName, DoB(R1)
+
+
+
+Cartesian/Cross- Product
+• R x S
+• Returns a new relation that is the concatenation of every tuple of relation R with each tuple of relation S
+• The schema of the cross-product relation is the union of the 2 schemas of the operands relations
+• How many tuples in the Cartesian product of R x S?
+    – Cardinality(R) x Cardinality(S)
+    – If cross-product two tables of 100 rows each it yields a table with 10,000 rows!
+
+
+
+Cartesian/Cross-Product
+English: All students times all enrollments
+Relational Alg.: Students x Enrollments
+SQL: SELECT * FROM Students, Enrollments, or SELECT * FROM Students CROSS JOIN Enrollments
+• R x S
+• Returns a new relation that is the concatenation of every tuple of relation R with each tuple of relation S
+
+
+
+Cartesian/Cross-Product
+English: All students and their enrollments
+Relational Alg.: s Students.StudID=Enrollments.StudID (Students x Enrollments))
+SQL: SELECT * FROM Students, Enrollments WHERE Students.StudID = Enrollments.StudID
+• R x S
+• Returns a new relation that is the concatenation of every tuple of relation R with each tuple of relation S
+
+
+
+Cartesian/Cross-Product
+English: Return the name and major of all students accepted in ‘English’ course
+Relational Alg.: P StudName, Major(s Students.StudID=Enrollments.StudID Λ CourseTitle=‘English’ Λ 
+Decision=TRUE (Students x Enrollments))
+SQL: SELECT StudName, Major FROM Students CROSS JOIN Enrollemnts WHERE Students.StudID = Enrollments.StudID AND CourseTitle=‘English’ AND Decision=TRUE
+• R x S
+• Returns a new relation that is the concatenation of every tuple of relation R with each tuple of relation S
+• Examples
+
+
+
+Rename
+• ρR(A1, …, An) (Exp) 
+• Usages: Disambiguation in self-joins
+• Example:
+English: Return pairs of courses offered by the same department
+Relational Alg.: σ D1=D2(ρC1(CT1, D1, C1)(Courses) x ρC2(CT2, D2, C2)(Courses))
+SQL: SELECT * FROM Courses AS C1, Courses AS C2 WHERE C1.Department = C2.Department
+
+
+
+Rename
+• ρR(A1, …, An) (Exp) 
+• Usages: Disambiguation in self-joins
+• Example:
+English: Return pairs of distinct courses offered by the same department
+Relational Alg.: σ D1=D2 Λ CT1<>CT2 (ρC1(CT1, D1, C1)(Courses) x ρC2(CT2, D2, C2) (Courses))
+SQL: SELECT * FROM Courses AS C1, Courses AS C2 WHERE C1.Department = C2.Department AND C1.CourseTitle <> C2.CourseTitle
+
+
+
+Exercise
+Which of the following expressions does NOT return the name and major of students born in Timisoara who applied for Databases course and were rejected?
+a) π StudName,Major(σ Students.StudID=Enrollments.StudID(σ PoB=‘Timisoara’(Students) × σ CourseTitle=‘Databases‘ ∧ Decision=FALSE(Enrollments)))
+b) π StudName,Major(σ Students.StudID=Enrollments.StudID ∧ PoB=‘Timisoara’ ∧ CourseTitle=‘Databases‘ ∧ Decision=FALSE(Students×πStudentsID,CourseTitle,Decision(Enrollments)))
+c) σ Students.StudID=Enrollments.StudID(π StudName, Major(σ PoB=‘Timisoara’(Students × σ CourseTitle=‘Databases‘ ∧ Decision=FALSE(Enrollments)))
+
+
+
+Exercise - solved
+Which of the following expressions does NOT return the name and major of students born in Timisoara who applied for Databases course and were rejected?
+a) π StudName,Major(σ Students.StudID=Enrollments.StudID(σ PoB=‘Timisoara’(Students) × σ CourseTitle=‘Databases‘ ∧ Decision=FALSE(Enrollments)))
+b) π StudName,Major(σ Students.StudID=Enrollments.StudID ∧ PoB=‘Timisoara’ ∧ CourseTitle=‘Databases‘ ∧ Decision=FALSE(Students×πStudentsID,CourseTitle,Decision(Enrollments)))
+c) σ Students.StudID=Enrollments.StudID(π StudName, Major(σ PoB=‘Timisoara’(Students × σ CourseTitle=‘Databases‘ ∧ Decision=FALSE(Enrollments)))
+The correct answer is c) because after projection on StudName and Major the attributes StudID in Students/Enrollments are no longer available.
+
+
+
+Join Operations
+• Typically we only need subsets of the Cartesian product
+• Types of joins:
+    – Theta join
+    – Equi join
+    – Natural join
+• Later renamed to INNER Join
+• No additional power to Relational Algebra; these are shortened forms of other expressions
+• The schema of join operation is the union of the 2 schemas of the operands relations
+
+
+
+Theta Inner Join
+R F
+S 
+Returns a new relation that contains tuples satisfying the predicate F from the Cartesian product of R and S.
+The predicate F is of the form F = R.ai q S.bi where q may be one of the comparison operators: <, >, <=, >=, =, <>
+A Theta join is a shortened form of: R F S = s F (R x S) 
+SELECT * FROM R, S WHERE F
+SELECT * FROM R, S WHERE R.Ai [>|<|>=|<=|=] S.Bj
+
+
+
+Equi Inner Join
+R ⋈F S
+S where F is like R.ai = S.bi
+a Theta join where operator is = in all expressions.
+• Examples:
+- All enrollments with their name, major, date and place of birth:
+- Name and major of all enrollments in Networks Intro
+
+
+
+Equi Inner Join
+R ⋈F S
+S where F is like R.ai = S.bi
+a Theta join where operator is = in all expressions
+English: All enrollments with their name, major, date and place of birth
+Relational Alg.: Enrollments Enrollments.StudID=Students.StudID Students
+SQL: SELECT * FROM Enrollments JOIN Students ON Enrollments.StudID = Students.StudID
+
+
+
+Equi Inner Join
+R ⋈F S where F is like R.ai = S.bi
+a Theta join where operator is = in all expressions English Name and major of all enrollments in Networks course
+Relational Alg.: P StudName, Major(s CourseTitle=‘Networks’ (Enrollments Enrollments.StudID=Students.StudID Students))
+SQL: SELECT StudName, Major FROM Enrollments INNER JOIN Students ON Enrollments.StudID = Students.StudID WHERE CourseTitle = ‘Networks’
+
+
+
+Natural join
+R ⋈ S
+The natural join is an equi-join of two relations R and S over all common attributes. One occurrence of each common attribute is removed from the result.
+INNER JOIN – common columns are duplicated
+NATURAL JOIN – common columns are included only once
+English: Name and major of all enrollments in Networks course
+Relational Alg.: P StudName, Major(s CourseTitle=‘Networks’ (Enrollments Students))
+SQL: SELECT StudName, Major FROM Enrollments NATURAL JOIN Students WHERE CourseTitle = ‘Networks’
+(*) SQL NATURAL JOIN is not supported by all DBMSes
+
+
+
+Extensions to Relational Algebra
+• Left / Right Outer join
+• Full Outer join
+• Left / Right Semi join
+• Left / Right Anti join
+
+
+
+Left / Right Outer Join
+The left outer join is a join in which tuples from R that do not have matching values in the common columns of S are also included in the result relation
+Missing values in the second relation (S) are set to null.
+Preserves tuples that would have been lost with other types of join.
+Similarly, the right outer join preserves tuples from the right-hand side relation.
+R ⟕ S or R ⟖ S
+
+
+
+Left / Right Outer Join
+R ⟕ S
+English: All students and for each one what courses he/she enrolled into, or NULL if none
+Relational Alg.: Students Enrollments
+SQL: SELECT * FROM Students LEFT JOIN Enrollments ON Students.StudID = Enrollments.StudID
+English: All courses offered by CS department and for each course the list of enrolled students, or NULL if none
+Relational Alg.: s Department = ‘CS’ (Enrollments Courses)
+SQL: SELECT * FROM Enrollments RIGHT JOIN Courses ON Enrollments.CourseTitle = Courses.CourseTitle WHERE Department = ‘CS’
+
+
+
+Full Outer Join
+R ⊔ S
+The result of the full outer join is the set of all combinations of tuples in R and S that are equal on their common attribute names, in addition to tuples in S that have no matching tuples in R and tuples in R that have no matching tuples in S in their common attribute names. Missing values are set to null.
+
+
+
+Full Outer Join
+R ⊔ S
+English: All students and all courses offered by the department of their major
+Relational Alg.: Students ⊔ Courses
+SQL: SELECT * FROM Students FULL JOIN Courses ON Students.Major = Courses.Department
+The result of the full outer join is the set of all combinations of tuples in R and S that are equal on their common attribute names, in addition to tuples in S that have no matching tuples in R and tuples in R that have no matching tuples in S in their common attribute names. Missing values are set to null.
+
+
+
+Left / Right Semi Join
+R ⟕ S 
+Returns a relation that contains only the columns of R; only the tuples of R that participate in the join with S will be returned and only once, regardless how many times matched in S. S = A1, .., An (R S), where R(A1, ..., An)
+Source: https://sqlchitchat.com/sqldev/tsql/semi-joins-in-sql-server/
+
+
+
+Left / Right Semi Join
+R ⟕ S  
+Returns a relation that contains only the columns of R; only the tuples of R that participate in the join with S will be returned and only once, regardless how many times matched in S. R S = A1, ..., An (R S), where R(A1 , ..., An)
+Variant 1:
+SELECT * FROM R WHERE R.A IN (SELECT S.B FROM S)
+Variant 2:
+SELECT * FROM R WHERE R.A IN (SELECT S.B FROM S WHERE R.A = S.B) Self-contained, multi-valued subquery Correlated, multi-valued subquery
+Variant 3:
+SELECT R.* FROM R NATURAL JOIN S /*when R and S share common cols*/
+
+
+
+Left / Right Semi Join
+R ⟕ S  
+Returns a relation that contains only the columns of R; only the tuples of R that participate in the join with S will be returned and only once, regardless how many times matched in S.
+English: Full details of students who are accepted in the Networks course
+Relational Alg.: Students (sCourseTitle=‘Networks’ AND Decision=T (Enrollments))
+SQL: SELECT * FROM Students WHERE StudID IN (SELECT StudID FROM Enrollments WHERE CourseTitle=‘Networks’ AND Decision=TRUE)
+
+
+
+Left / Right Semi Join
+R ⟕ S 
+English: Full details of students who are accepted in the Networks course
+Relational Alg.: Students (sCourseTitle=‘Networks’ AND Decision=TRUE (Enrollments))
+SQL: SELECT * FROM Students WHERE StudID IN (SELECT StudID FROM Enrollments WHERE Enrollments.StudID = Students.StudID AND CourseTitle=‘Networks’ AND Decision=TRUE)
+
+
+
+Left / Right Anti Join
+Left anti join: R ⟕_ S
+Right anti join: R _⟖ S
+Does the opposite of semi join, i.e. returns the rows in R that do not have at least one matching row in table S.
+▷ R ▷ S = R – (R S)
+Variant 1:
+SELECT * FROM R WHERE R.A NOT IN (SELECT S.B FROM S)
+Variant 2:
+SELECT * FROM R WHERE R.A NOT IN (SELECT S.B FROM S WHERE R.A = S.B)
+Variant 3:
+SELECT * FROM R WHERE NOT EXISTS (SELECT S.B FROM S WHERE R.A = S.B)
+Variant 4:
+SELECT R.A FROM R EXCEPT SELECT S.B FROM S
+
+
+
+Left / Right Anti Join
+R S ▷ R ▷ S = R – (R S)
+English: Full details of students who are not accepted in the Networks course
+Relational Alg.: Students ▷(sCourseTitle=‘Networks’ AND Decision=TRUE (Enrollments))
+SQL: SELECT * FROM Students WHERE NOT EXISTS (SELECT StudID FROM Enrollments WHERE Enrollments.StudID = Students.StudID AND CourseTitle=‘Networks’ AND Decision=TRUE)
+
+
+
+Set Operations
+• UNION
+• DIFFERENCE
+• INTERSECTION
+
+
+
+Set Union
+• R ∪ S
+The union of two relations R and S with I and J tuples respectively, is obtained by concatenating them into one relation with a maximum of I + J tuples, duplicates being eliminated. 
+• R and S must be union compatible
+    – they have the same number of attributes / columns
+    – Corresponding attributes have the matching domains (same data type with the same length)
+
+
+
+Set Union
+• R ∪ S
+The union of two relations R and S with I and J tuples respectively, is obtained by concatenating them into one relation with a maximum of I + J tuples, duplicates being eliminated. 
+• SQL Implementation
+UNION – removes duplicated rows
+SELECT * FROM R UNION
+SELECT * FROM S UNION ALL – preserves duplicated rows
+SELECT * FROM R UNION ALL
+SELECT * FROM S
+
+
+
+Set Union
+• R ∪ S
+The union of two relations R and S with I and J tuples respectively, is obtained by concatenating them into one relation with a maximum of I + J tuples, duplicates being eliminated. 
+English: List of all departments and majors
+Relational Alg.: P Department(Courses) u P Major(Students)
+SQL: SELECT Department FROM Courses UNION SELECT Major FROM Students
+
+
+
+Set Difference
+• R − S
+Defines a relation consisting of the tuples that are in relation R, but not in S. 
+• R and S must be union compatible.
+• SQL Implementation
+    – MS SQL Sever, PostgreSQL – EXCEPT
+    – Oracle – MINUS
+    – MySQL & others – not supported
+Recommended
+SELECT R.* FROM R LEFT JOIN S ON R.ID=S.ID WHERE S.ID IS NULL
+SELECT * FROM R WHERE NOT EXISTS (SELECT * FROM S WHERE R.ID = S.ID)
+SELECT * FROM R WHERE NOT IN (SELECT * FROM S WHERE R.ID = S.ID)
+
+
+
+Set Difference
+• R – S
+Defines a relation consisting of the tuples that are in relation R, but not in S. 
+• R and S must be union compatible.
+English: IDs of students who didn’t apply for any course
+Relational Alg.: P StudID (Students) - P StudID(Enrollments)
+SQL: SELECT StudID FROM Students EXCEPT SELECT StudID FROM Enrollments
+
+
+
+Set Difference
+• R – S
+Defines a relation consisting of the tuples that are in relation R, but not in S. 
+• R and S must be union compatible.
+English: IDs of students who didn’t apply for any course
+Relational Alg.: P StudID (Students) - P StudID(Enrollments)
+SQL: SELECT Students.StudID FROM Students LEFT JOIN Enrollments ON Enrollments.StudID = Students.StudID WHERE Enrollments.StudID IS NULL
+
+
+
+Set Intersection
+• R ∩ S
+• Consists of the set of all tuples that are in both R and S. 
+• R and S must be union-compatible.
+• Not additional expressiveness to Relational Algebra
+    – R − (R ∩ S) = R − (R − S)
+    – R ∩ S = R − (R − S)
+
+
+
+Set Intersection
+• R ∩ S
+• Consists of the set of all tuples that are in both R and S. 
+English: All nouns that are both department names and majors
+Relational Alg.: P Department (Courses)  P Major(Students)
+SQL: SELECT Department FROM Courses INTERSECT SELECT Major FROM Students
+SQL: SELECT DISTINCT Department FROM Courses INNER JOIN Students ON Courses.Department = Students.Major
+
+
+
+Exercise
+• Write the relational algebra expression and its SQL implementation that returns the IDs and names of students who did not apply to any course.
+
+
+
+Exercise
+• Write the relational algebra expression and its SQL implementation that returns the IDs and names of students who did not apply to any course.
+English: IDs and names of students who didn’t apply for any course
+Relational Alg.: P StudID, StudName ((P StudID (Students) - P StudID(Enrollments)) Students)
+SQL: SELECT Students.StudID, StudNames FROM Students LEFT JOIN Enrollments ON Enrollments.StudID = Students.StudID WHERE Enrollments.StudID IS NULL
+
+
+
+Exercise
+Which of the following English sentences describes the result of the following expression?
+π CourseTitle(Courses) - π CourseTitle(Enrollments (π StudID(σ PoB=‘Timisoara’(Students))  π StudID(σ Decision=TRUE(Enrollments)))))
+a) All courses where all Students either were born in Timisoara or were accepted in any course
+b) All courses with no Timisoara-born students who were accepted at any course
+c) All courses with no Timisoara-born students or rejected students
+
+
+
+Exercise
+Which of the following English sentences describes the result of the following expression?
+π CourseTitle(Courses) - π CourseTitle(Enrollments (π StudID(σ PoB=‘Timisoara’(Students))  π StudID(σ Decision=TRUE(Enrollments)))))
+a) All courses where all Students either were born in Timisoara or were accepted in any course
+b) All courses with no Timisoara-born students who were accepted at any course
+c) All courses with no Timisoara-born students or rejected students
+
+
+
+Other Extensions to Relational Algebra
+• Division
+• Extended projection
+    – Aggregations
+    – Groupings
+
+
+
+Division
+R ÷ S 
+Defines a relation over the attributes C that consists of the set of tuples from R that match the combination of every tuple in S.
+Example: Identify all students who enrolled to all courses offered by CS department.
+
+
+
+Division
+R ÷ S 
+Defines a relation over the attributes C that consists of the set of tuples from R that match the combination of every tuple in S.
+Example: Identify all students who enrolled to all courses offered by CS department.
+P StudID, CourseTitle (Enrollments) P CourseTitle (s Dept=‘CS’ ÷ (Courses))
+There is No equivalent SQL command!
+
+
+
+Aggregate
+The main aggregate functions are:
+- COUNT – returns the number of values in the associated attribute.
+- SUM – returns the sum of the values in the associated attribute.
+- AVG – returns the average of the values in the associated attribute.
+- MIN – returns the smallest value in the associated attribute.
+- MAX – returns the largest value in the associated attribute.
+English: Find the number of students born in Timisoara
+Relational Alg.: COUNT StudId(σPoB=‘Timisoara’(Students))
+SQL: SELECT COUNT(StudID) AS StudCount FROM Student WHERE PoB=‘Timisoara’
+
+
+
+Grouping
+English Find the number of students born in each city
+Relational Alg.:
+SQL: SELECT PoB AS ‘Place of Birth’, COUNT(*) AS ‘Nb of students’ FROM Students GROUP BY PoB
+
+
+
+The Anatomy of the SELECT statement
+Projection Join (equi) Selection:
+SELECT [TOP n] [DISTINCT] column [AS alias], AGG_FUNC(column_or_expression) [AS alias], ... FROM mytable JOIN another_table ON mytable.column = another_table.column WHERE constraint_expression GROUP BY column HAVING constraint_expression ORDER BY column ASC/DESC LIMIT count OFFSET skip
+
+
+
+Logical Query Processing Order
+SELECT [TOP n] [DISTINCT] column [AS alias], AGG_FUNC(column_or_expression) [AS alias], ... FROM mytable JOIN another_table ON mytable.column = another_table.column WHERE constraint_expression GROUP BY column HAVING constraint_expression ORDER BY column ASC/DESC LIMIT count OFFSET skip FROM & JOINs WHERE GROUP BY HAVING SELECT [DISTINCT] ORDER BY FAST WALKING GIANTS HAVE SMELLY ODOR
+The logical query processing order is the logical order in which the clauses that make up a SELECT statement are processed.
+
+
+
+Logical Query Processing Order
+To add to the above list there are two keywords used in the SELECT clause that are processed after the ORDER BY when they are present. 
+They are logically processed in the following order:
+DISTINCT - Removes all duplicate records after the data has been ordered.
+TOP - Returns the TOP number or percentage of rows after the data has been ordered and duplicates have been removed when DISTINCT is present.
+OFFSET/LIMIT – Are applied after DISTINCT and ORDER BY
+
+
+
+Subqueries
+SELECT [TOP n] [DISTINCT] -- < OUTER QUERY column [AS alias], AGG_FUNC(column_or_expression) [AS alias], ... FROM mytable JOIN another_table ON mytable.column = another_table.column WHERE Attr = (SELECT …) -- < INNER QUERY
+Subquery can be
+• SELF-CONTAINED – has no references to the outer query
+• CORRELATED – has references to the outer query and is dependent on it.
+Subquery can be
+• SINGLE-VALUES (SCALAR) – returns a scalar value
+• MULTI-VALUED – returns a set
+
+
+
+Mapping relational operators to SQL
+Relational operator SQL support
+Selection: SELECT * FROM R, S WHERE F
+Natural Join: SELECT * FROM R NATURAL JOIN S
+Equi Inner Join: SELECT * FROM R INNER JOIN S ON R.CA = S.CA
+Left Outer Join: SELECT * FROM R LEFT OUTER JOIN S ON R.CA = S.CA
+Full Outer Join: SELECT * FROM R FULL OUTER JOIN S ON R.CA = S.CA
+Semi Join: SELECT * FROM R WHERE R.A IN (SELECT S.B FROM S)
+Anti Join: SELECT * FROM R WHERE NOT EXISTS (SELECT S.B FROM S WHERE R.A = S.B)
+Division: This operator is not directly supported in SQL. It can be achieved using complex queries involving other operations.
+Grouping and Aggregation:
+- AL(R) :
+SELECT <AL> FROM R
+- GAGAL(R) :
+SELECT GA1, ..., GAn, <AL> FROM R GROUP BY GA1, ..., GAn
+Remark: CA in above SELECT statements stands for Common Attributes and is the list of one or more common attributes shared by R and S tables.
+
+
+
+Some Exercises
+-- Exercise: List the id, name, surname, date of birth, place of birth, major and any unconfirmed enrollment they may have
+SELECT S.StudID AS ID, LEFT(StudName, CHARINDEX(' ', StudName)) AS NUME, RIGHT(StudName, LEN(StudName) - CHARINDEX(' ', StudName)) AS PRENUME, FORMAT(DoB, 'dd MMMM yyyy') AS "DATA NASTERII", PoB AS "LOCUL NASTERII", Major AS SPECIALIZARE, EC.* FROM Students S LEFT JOIN (SELECT E.*, C.Department, C.Credits FROM Enrollments E INNER JOIN Courses C ON E.CourseTitle = C.CourseTitle) EC ON S.StudID = EC.StudID WHERE Accepted IS NULL ORDER BY NUME, PRENUME
+-- Exercise: List the name of the students and their total unconfirmed credits sorted desc by total unconfirmed credits, for all students with at least 2 unconfirmed enrollments
+SELECT StudName, SUM(EC.Credits) AS UnconfirmedCredits FROM Students S LEFT JOIN (SELECT E.*, C.Department, C.Credits FROM Enrollments E INNER JOIN Courses C ON E.CourseTitle = C.CourseTitle) EC ON S.StudID = EC.StudID WHERE Accepted IS NULL GROUP BY StudName HAVING COUNT(*) > 1 ORDER BY UnconfirmedCredits DESC
+-- Exercise: Find duplicate student names
+SELECT LEFT(StudName, CHARINDEX(' ', StudName)) AS NUME, COUNT(*) AS DUPLICATE FROM Students S GROUP BY LEFT(StudName, CHARINDEX(' ', StudName)) HAVING COUNT(*) > 1 ORDER BY NUME
+
+
+
+When a DBMS is relational?
+• The 12 + 1 rules of Codd
+• Foundational rules
+• Structural rules
+• Integrity rules
+• Data manipulation rules
+• Data independence rules
+
+
+
+Foundational rules
+• Rule 0: The system must be able to manage databases entirely through its relational capabilities
+• Rule 12 (non-subversion): If a relational system has a low level (single-record-at-a-time) language, that low level cannot be used to subvert or bypass the integrity rules and constraints expressed in the higher level relational language (multiple-records-at-a-time)
+
+
+
+Structural rules
+• Rule 1 (information representation): All information is represented explicitly at the logical level and in exactly one way – by values in tables
+• Rule 6 (view updating): All views that are theoretically updatable are also updateable by the system
+
+
+
+Integrity rules
+• Rule 3 (systematic treatment of null values): Null values are supported for representing missing information and inapplicable information in a systematic way, independent of data type
+• Rule 10 (integrity independence): Integrity constraints specific to a particular relational database must be definable in the relational data sublanguage and storable in the catalog, not in applications
+
+
+
+Data manipulation rules
+• Rule 2 (guaranteed access): Each and every atomic value in a relational database is guaranteed to be logically accessible by resorting to a combination of table name, primary key value and column name
+• Rule 4 (dynamic online catalog based on the relational model): The database description is represented at the logical level in the same way as ordinary data, so that authorized users can apply the same relational language to its interrogation as they apply to regular data
+• Rule 5 (comprehensive data sublanguage): There must be at least one language whose statements can express all of the following items: data definition, view definition, data manipulation, integrity constraints, authorization, transaction boundaries
+• Rule 7 (high level insert, update, delete): The capability of handling a base relation or a derived relation as a single operand applies not only to data retrieval but also to the insertion, update, and deletion of data
+
+
+
+Data independence rules
+• Rule 8 (physical data independence): Apps remain logically unimpaired whenever any changes are made in either storage representations or access methods
+• Rule 9 (logical data independence): Apps remain logically unimpaired when information-preserving changes of any kind that permit unimpairment are made to base tables
+• Rule 11 (distribution independence): The DML must enable apps to remain logically the same whether and whenever data are physically centralized or distributed

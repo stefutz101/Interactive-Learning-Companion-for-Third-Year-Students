@@ -1,0 +1,6 @@
+[
+    {
+        "context": "CREATE TABLE Dishes (DishID INT, Name TEXT, Price FLOAT, LastUpdated DATE);",
+        "prompt": "Find menu items with the lowest price decrease since last month."
+    }
+]

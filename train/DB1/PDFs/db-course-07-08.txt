@@ -1,0 +1,272 @@
+Conceptual modelling
+• Conceptual modelling (conceptual database design) is the process of constructing a model of the information use in an enterprise 
+• Model is independent of implementation details, such as the target DBMS, application programs, programming languages, or any other physical considerations. 
+• This model is called a conceptual data model. 
+• Conceptual models may also be referred to as logical models in the literature. 
+• The conceptual model is independent of all implementation details, whereas the logical model assumes knowledge of the underlying data model of the target DBMS.
+
+
+
+Entity-relationship (E-R) model
+• Historically and still very popular 
+    – Peter Chan 1976
+• Graphical language
+• Can think of as a “watered-down” object-oriented design model
+• Primarily a design model—not directly implemented by DBMS
+• Designs represented by E-R diagrams 
+    – We use the style of E-R diagram covered by GMUW; there are other styles/extensions 
+    – Very similar to UML diagrams
+    – Crow’s Foot notation – Gordon Everest 1976 / Barker’s notation
+• Relationships need to be represented as tables/relations
+
+
+
+Entity sets. Attributes
+• Entity Set has a name and a set of attributes
+• An attribute has a name and a domain 
+    – data type (e.g., INT, VARCHAR)
+    – constraints (e.g., allows, or not, NULL value)
+
+
+
+Properties of relationships
+• Relationships can have attributes
+• There could be multiple relationships between the same entity sets. Examples
+• (1) Students Enroll to Courses; 
+• (2) Students are assigned to Teaching Assistant (TA) per Courses 
+• Properties of relationships
+    – Degree
+    – Multiplicity
+    – Reflexivity
+
+
+
+Properties of relationships
+• Degree of a relationship = the number of participating entity sets in the relationship
+    – Binary relations (degree = 2)
+    – N-ary relations (N >= 3) 
+    – Example: Enroll is a binary relation because it connects 2 entity sets (Students and Courses);
+
+
+
+Relationships classification
+Reflexive relationships: entities of the same 
+entity set are related to each other
+
+
+
+Multiplicity of relationships
+Multiplicity - The multiplicity applies to the adjacent entity and it is independent of the multiplicity on the other side of the association. Let E and F be 2 entities.
+One-one: Each entity in E is related to 0 or 1 entity in F and vice versa.
+Many-one: Each entity in E is related to 0 or 1 entity in F, but each entity in F is related to 0 or more in E.
+Many-many: Each entity in E is related to 0 or more entities in F and vice versa
+“One” (0 or 1) is represented by an arrow. 
+“Exactly one” is represented by a rounded arrow.,
+
+
+
+Multiplicity of relationships
+The multiplicity in Crow’s foot notation
+Source:
+https://study.com/academy/lesson/cardinality-in-database-design-examples-and-crows-foot-notation.html
+An Example
+
+
+
+Modelling N-ary relationships. Exercise
+Which decompositions (b, c, d, e) of the n-ary relationship in (a) hold the same constraints as in (a)?
+
+
+
+Translating E-R Diagram to Relational Model
+• An Entity Set directly translates to a table: 
+• Attributes map to columns, 
+• Key attributes become candidate keys
+• A relationship translates to…. guess what? ….. a table (of course)
+• PK of connected entities become columns (FK)
+• Attributes of the relationship become columns
+• Choose the PK based on multiplicity of the relationship
+• A Weak Entity Set translates to a table too: 
+• PK will be a composed PK of the connected entity sets’ primary key columns (which become FK)
+• Pay attention to name conflicts
+• A double-diamond connecting one weak entity set to another entity – no need to translates since the keys migrate anyway (example: Seats-Rooms-Buildings)
+
+
+
+Translating E-R Diagram to Relational Model. 
+Examples
+• Example: 
+Students(SID, Name)
+Courses(CID, Title)
+Enroll(SID, CID, grade)
+• Example: 
+Buildings(name, year)
+Rooms(building_name, number, capacity)
+Seats(number, building_name, room_number, L_R)
+
+
+
+Translating IS-A (Inheritance Mapping)
+• Mapped Superclass
+• Single Table
+• Table per Class
+• Joined Table
+
+
+
+Inheritance Mapping. Mapped Superclass
+• Maps each subclass to its own table (includes attributes from superclass)
+• There is no table for superclass
+• Not possible to represent relationships for superclass (base class), e.g. author-publication relationship
+
+
+
+Inheritance Mapping. Table per class
+• Maps each subclass to its own relation (includes attributes from superclass)
+• There is no table for superclass
+• Maps the relationship Authors-Write-Publications to a relation
+• Retrieval of authors-publications details rely on complex and expensive queries involving UNION
+• Tables involved in UNION must be compatible!
+
+
+
+Inheritance Mapping. Table per class
+SELECT PA.*, P.* FROM PublicationAuthor PA 
+INNER JOIN
+(SELECT *, 1 as Type from Book UNION ALL SELECT *, 2 as Type from BlogPost) P ON PA.publicationId = P.id WHERE PA.authorId=?
+
+
+
+Inheritance Mapping. Joined table
+• Maps each subclass to its own relation (does not include attributes from superclass) + FK to parent’s relation
+• Maps the superclass to a relation as well
+• Maps the relationships to a relation
+• More joins are required as attributes are split between super class and subclasses
+• Queries exhibit a better performance, but still complex
+
+
+
+Inheritance Mapping. Joined table
+SELECT 
+PA.*, P.id, P.publishingDate, P.title, P.version, B.pages, BP.url
+FROM
+PublicationAuthor PA 
+INNER JOIN Publication P ON PA.publicationId = P.id 
+LEFT OUTER JOIN Book B ON P.id = B.id 
+LEFT OUTER JOIN BlogPost BP ON P.id = BP.id 
+WHERE
+PA.authorId = ?
+
+
+
+Inheritance Mapping. Single table
+• Maps all entities of the inheritance structure to the same relation
+• Easy to include in relationships; queries have best performance
+• Drawbacks: lots of NULLs => data integrity may break
+• An additional discriminator column is needed for the type
+
+
+
+Inheritance Mapping. Single table
+SELECT
+PA.*, P.* 
+FROM
+PublicationAuthor PA 
+INNER JOIN Publication P ON PA.publicationId = P.id
+WHERE
+PA.authorId = ?
+
+
+
+Comparison of the four approaches
+Name    Mapped superclass   Table per class     Single table    Joined
+Attributes are scattered No No No Yes
+Entity instances are scattered Yes Yes No Yes
+Polymorphic queries / Does the superclass gets its own table No Yes Yes Yes
+
+
+
+Choosing an approach
+• If you require the best performance and need to use relationships, you should choose the single table strategy. But be aware, that you can’t use not null constraints on subclass attributes which increase the risk of data inconsistencies.
+• If data consistency is more important than performance and you need relationships, the joined strategy is probably your best option.
+• If you don’t need relationships, the table per class strategy is most likely the best fit. It allows you to use constraints to ensure data consistency and provides an (inefficient) option to express relationships.
+• Use Mapped Superclass when the superclass factors out common properties of otherwise unrelated entities (e.g. auditing details – createdBy, createdAt, modifiedBy, modifiedAt, version)
+
+
+
+Case study 1. Second design discussion
+1 to (0 or many)
+This diagram has been exported from Microsoft SQL Server Studio and the 
+notation differs a bit comparing to E-R symbols.
+
+
+
+Case study 1. Second design discussion
+• Database Schema
+States(Name)
+Counties(Name, Area, StateName)
+Cities(Name, Population, CountyName, StateName)
+CapitalOf(CityName, CountyName, StateName)
+• Q: Which NF? A: 5NF
+• Q: Is it anomalies free? A: YES
+• Q: Any issues? Redundancy due to composed A: CKs
+
+
+
+Case study 1. Third design
+• Introduce surrogate PK
+• Represent Capital in States
+This diagram has been exported from Microsoft SQL Server Studio and the notation differs a bit comparing to E-R symbols.Cycle in design
+
+
+
+Practical Design Recommendations
+• Avoid redundancy
+• Everything should depend on the entire key and nothing but the key
+• Carefully design the keys => BIG impact on performance, hence use integer type, introduce surrogates if necessary; capture natural keys as unique constraints
+• Capture essential constraints; don’t introduce unnecessary ones
+• Manage indexes
+• Choose data types carefully
+• Code style
+
+
+
+SQL Data Types
+• Exact numerics
+• BIGINT/INT/SMALLINT/TINYINT/BIT
+• SMALLMONY/MONEY - precision
+• DECIMAL/NUMERIC(p, s) - fractions
+• Approximate numerics – floating point numeric data
+• FLOAT/REAL
+• Character strings
+• CHAR(n)/VARCHAR(n)/TEXT – ASCII characters (VAR = variable-size)
+• Collation controls the code page that is used to store the character data
+• n defines the string length in bytes not the number of characters
+• Character strings
+• National character strings
+• NCHAR(n)/NVARCHAR(n)/NTEXT - for everything else
+• n defines the string length in byte-pairs not the number of characters
+• Date and time
+• DATE, TIME, TIMESTAMP
+• Binary strings
+• BINARY/VARBINARY/IMAGE
+• Other data types
+• UNIQUEIDENTIFIER – 16-byte GUID, replication, hide next key, performance
+• XML – subset of XQuery language
+• Spatial geometry/geography types
+
+
+
+• Avoid using reserved words for naming tables, fields, constraints (even variables)
+• Use schema to group the tables and stored procedures of a specific part of the application (e.g. instead of using [dbo].[SalesCustomer], use [Sales].[Customer])
+• Table names
+• use singular nouns (e.g. use employee instead of employees)
+• use a single word that describes the table (if it is possible)
+• Field names
+• do not use a table name into field names
+• keep them as short as possible
+• Constraints (PK / FK / etc)
+• preferably use id to name a single Primary Key or a word to describe its unicity
+• use the name of the tables in a Foreing Key name (FK_<TargetTable>_<SourceTable>)
+• the name of a composite FK should contain all keys
+Code Conventions

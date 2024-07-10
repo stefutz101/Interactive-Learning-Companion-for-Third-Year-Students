@@ -1,0 +1,30 @@
+[
+    {
+        "context": "CREATE TABLE Dishes (DishID INT, Name TEXT, Price FLOAT, LastUpdated DATE);",
+        "prompt": "Find menu items with the lowest price decrease since last month."
+    },
+    {
+        "prompt": "What does Full Outer Join do in databases?"
+    },
+    {
+        "prompt": "What is the purpose of a Full Outer Join in databases?"
+    },
+    {
+        "prompt": "What are functional dependencies in database normalization?"
+    },
+    {
+        "context": "CREATE TABLE disability_programs (id INT PRIMARY KEY, name VARCHAR(255), description TEXT, website VARCHAR(255));",
+        "prompt": "List all disability support programs without a website"
+    },
+    {
+        "prompt": "What is XML serialization and why is it important in XML databases?"
+    },
+    {
+        "context": "CREATE TABLE Movies_Data (title VARCHAR(255), release_year INT, country VARCHAR(50));",
+        "prompt": "Number of movies released in Japan each year"
+    },
+    {
+        "context": "CREATE TABLE Visitors (Id INT, Name VARCHAR(50), Age INT, FirstVisit DATE, ReturnVisit DATE);",
+        "prompt": "What is the minimum and maximum age of visitors to the museum?"
+    }
+]
