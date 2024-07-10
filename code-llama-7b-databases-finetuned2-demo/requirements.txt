@@ -1,0 +1,9 @@
+fastapi
+fastapi-mail
+uvicorn
+pydantic
+transformers
+torch
+accelerate
+peft
+transformers[sentencepiece]

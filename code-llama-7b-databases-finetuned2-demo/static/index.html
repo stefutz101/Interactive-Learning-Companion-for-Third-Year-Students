@@ -1,0 +1,140 @@
+<main>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Text Generation Form</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <main>
+            <div id="loading-overlay">
+                <div class="loader"></div>
+            </div>
+            <section id="text-gen">
+                <h2>Text generation using code-llama-7b-databases-finetuned</h2>
+                <p>
+                    Model:
+                    <a
+                    href="https://huggingface.co/stefutz101/code-llama-7b-databases-finetuned2"
+                    rel="noreferrer"
+                    target="_blank"
+                    >code-llama-7b-databases-finetuned2 
+                    </a>
+                </p>
+                <p>
+                    Dataset:
+                    <a
+                    href="https://huggingface.co/datasets/stefutz101/db_course-synthetic_text_to_sql_dataset"
+                    rel="noreferrer"
+                    target="_blank"
+                    >db_course-synthetic_text_to_sql_dataset
+                    </a>
+                </p>
+                <form class="text-gen-form">
+                    <div class="mode-fields">
+                        <label for="mode-select">Select Mode</label>
+                        <select id="mode-select" onchange="updateForm()">
+                            <option value="sql">SQL</option>
+                            <option value="text">Text</option>
+                            <option value="file">File</option>
+                        </select>
+                    </div>
+            
+                    <div id="sql-fields" class="mode-fields">
+                        <div class="mode-fields">
+                            <label for="sql-context">Context</label>
+                            <textarea id="sql-context"></textarea>
+                        </div>
+                        <div class="mode-fields">
+                            <label for="sql-prompt">Text prompt</label>
+                            <textarea id="sql-prompt"></textarea>
+                        </div>
+                    </div>
+            
+                    <div id="text-fields" class="mode-fields" style="display: none;">
+                        <textarea id="text-context" style="display: none;">Provide an answer to the following question:</textarea>
+                        <label for="text-prompt">Text prompt</label>
+                        <input id="text-prompt" type="text" />
+                    </div>
+            
+                    <div id="file-fields" class="mode-fields" style="display: none;">
+                        <label for="file-input">Upload File</label>
+                        <input id="file-input" type="file" accept=".json" />
+                    </div>
+
+                    <div class="advanced-settings" id="advanced-settings">
+                        <p style="color: red; font-weight: bold; text-align: center;">
+                            Warning!! Do not change these settings if you don't know what you are doing!
+                        </p>
+
+                        <div class="mode-fields">
+                            <input id="tokenize" type="checkbox" />
+                            <label for="tokenize">Tokenize</label>
+                        </div>
+            
+                        <div class="mode-fields">
+                            <input id="add-generation-prompt" type="checkbox" checked />
+                            <label for="add-generation-prompt">Add Generation Prompt</label>
+                        </div>
+            
+                        <div class="mode-fields">
+                            <label for="max-new-tokens">Max New Tokens</label>
+                            <div class="range-container">
+                                <input id="max-new-tokens" type="range" min="0" max="512" step="1" value="256" oninput="this.nextElementSibling.value = this.value"/>
+                                <output>256</output>
+                            </div>
+                        </div>
+            
+                        <div class="mode-fields">
+                            <input id="do-sample" type="checkbox" checked />
+                            <label for="do-sample">Do Sample</label>
+                        </div>
+                        
+                        <div class="mode-fields">
+                            <label for="temperature">Temperature</label>
+                            <div class="range-container">
+                                <input id="temperature" type="range" min="0.1" max="1.0" step="0.1" value="0.7" oninput="this.nextElementSibling.value = this.value"/>
+                                <output>0.7</output>
+                            </div>
+                        </div>
+            
+                        <div class="mode-fields">
+                            <label for="top-k">Top K</label>
+                            <div class="range-container">
+                                <input id="top-k" type="range" min="1" max="100" step="1" value="50" oninput="this.nextElementSibling.value = this.value"/>
+                                <output>50</output>
+                            </div>
+                        </div>
+            
+                        <div class="mode-fields">
+                            <label for="top-p">Top P</label>
+                            <div class="range-container">
+                                <input id="top-p" type="range" min="0.1" max="1.0" step="0.05" value="0.95" oninput="this.nextElementSibling.value = this.value"/>
+                                <output>0.95</output>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="toggle-settings-btn">Advanced Settings</button>
+            
+                    <button id="text-gen-submit" type="submit">Submit</button>
+
+                    <!--
+                    <div class="mode-fields" style="padding-top: 15px;">
+                        <input type="checkbox" id="send-email">
+                        <label for="send-email">Receive results via email</label>
+                    </div>
+
+                    <div id="show-email" class="mode-fields" style="display: none">
+                        <label for="email-prompt">Please provide your email</label>
+                        <input id="email-prompt" type="text" />
+                    </div>
+                    -->
+
+                    <p class="text-gen-output"></p>
+                </form>
+            </section>
+        </main>
+        <script src="script.js"></script>
+    </body>
+  </main>
